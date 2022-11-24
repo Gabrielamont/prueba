@@ -47,18 +47,36 @@ class BillController extends Controller
             ->groupBy('buyer_user_id')
             ->get();
 
+        //dd($prueba);
+
         foreach ($prueba as $p) {
-            $bill = new Bill;
-            $bill->order_identification = Auth::id() . 'P' . getRandomToken(15);
-            $bill->client_id = $p->buyer_user_id;
 
-            $bill->save();
+            $bill_count        = Bill::where('client_id', $p->buyer_user_id)->count();
+            //dd($bill_count);
 
-            if ($bill->client_id == $p->buyer_user_id) {
-                DB::table('purchases')
-                    ->where('status', 0)
-                    ->where('buyer_user_id', $p->buyer_user_id)
-                    ->update(['status' => 1, 'bill_id' => $bill->id]);
+            if($bill_count > 0) {
+
+                $bill        = Bill::where('client_id', $p->buyer_user_id)->get();
+
+                foreach ($bill as $b) {
+                    DB::table('purchases')
+                        ->where('status', 0)
+                        ->where('buyer_user_id', $p->buyer_user_id)
+                        ->update(['status' => 1, 'bill_id' => $b->id]);
+                }
+            } else {
+                $bill = new Bill;
+                $bill->order_identification = Auth::id() . 'P' . getRandomToken(15);
+                $bill->client_id = $p->buyer_user_id;
+
+                $bill->save();
+
+                if ($bill->client_id == $p->buyer_user_id) {
+                    DB::table('purchases')
+                        ->where('status', 0)
+                        ->where('buyer_user_id', $p->buyer_user_id)
+                        ->update(['status' => 1, 'bill_id' => $bill->id]);
+                }
             }
         }
 

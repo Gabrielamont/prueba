@@ -69,6 +69,7 @@ class ProductController extends Controller
 
         $product = new Product();
         $product->user_id = Auth::id();
+        $product->status = 0;
         $product->fill($request->all());
 
         if ($product->save()) {

@@ -16,4 +16,5 @@ class Bill extends Model
     public function client() {
         return $this->belongsTo('App\Models\User', 'client_id');
       }
+
 }

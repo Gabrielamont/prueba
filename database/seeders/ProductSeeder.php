@@ -24,32 +24,32 @@ class ProductSeeder extends Seeder
         Product::create([
             'user_id' => 1,
             'name' => 'Manga',
-        	'price' => 100,
-            'iva' => 10,
+        	'price' => 39.73,
+            'iva' => 12,
             'status' => 0,
         ]);
 
         Product::create([
             'user_id' => 1,
             'name' => 'Anime',
-        	'price' => 100,
-            'iva' => 10,
+        	'price' => 250.00,
+            'iva' => 8,
             'status' => 0,
         ]);
 
         Product::create([
             'user_id' => 1,
             'name' => 'Videojuego',
-        	'price' => 100,
-            'iva' => 10,
+        	'price' => 123.45,
+            'iva' => 5,
             'status' => 0,
         ]);
 
         Product::create([
             'user_id' => 1,
             'name' => 'Pelicula',
-        	'price' => 100,
-            'iva' => 10,
+        	'price' => 45.65,
+            'iva' => 15,
             'status' => 0,
         ]);
     }

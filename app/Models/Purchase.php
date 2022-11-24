@@ -25,4 +25,8 @@ class Purchase extends Model
       public function buyer() {
         return $this->belongsTo('App\Models\User', 'buyer_user_id');
       }
+
+      public function bill() {
+        return $this->belongsTo('App\Models\Bill', 'bill_id');
+      }
 }

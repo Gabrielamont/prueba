@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         	'name' => 'admin',
             'email' => 'admin@gmail.com',
             'email_verified_at' => now(),
-            'password' => bcrypt(123456),
+            'password' => bcrypt(1234567),
             'cash' => 200,
         ]);
 
@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
         	'name' => 'purchaser',
             'email' => 'purchaser@gmail.com',
             'email_verified_at' => now(),
-            'password' => bcrypt(123456),
+            'password' => bcrypt(1234567),
             'cash' => 1000,
         ]);
     }
